@@ -8,11 +8,25 @@
 import SwiftUI
 
 struct CharacterDetail: View {
+    
+    var character : CharacterModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading, spacing: 10) {
+            Text(character.name)
+                .font(.system(size: 30))
+            ProfileImageView(url: character.image)
+            Text("Status: \(character.status)")
+                .font(.system(size: 20))
+            Text("Species: \(character.species)")
+                .font(.system(size: 20))
+            Text("Gender: \(character.gender)")
+                .font(.system(size: 20))
+            if !character.type.isEmpty == true {
+                Text("Type: \(character.type)")
+                    .font(.system(size: 20))
+            }
+        }
+        .padding(10)
     }
-}
-
-#Preview {
-    CharacterDetail()
 }

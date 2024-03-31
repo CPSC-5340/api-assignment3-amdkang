@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct ProfileImageView: View {
+    var url : String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        AsyncImage(url: URL(string: url)) {
+            image in
+            image.resizable()
+                .scaledToFit()
+        } placeholder: {
+            ProgressView()
+        }
     }
 }
 
 #Preview {
-    ProfileImageView()
+    ProfileImageView(url: "https://rickandmortyapi.com/api/character/avatar/1.jpeg")
 }

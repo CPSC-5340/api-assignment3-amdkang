@@ -7,31 +7,16 @@
 
 import Foundation
 
-struct CharacterResults {
-    let info : Info
+struct CharacterResults : Codable {
     let results : [CharacterModel]
 }
 
-struct Info {
-    let count : Int
-    let pages : Int
-    let next : String
-    let prev : String
-}
-
-struct CharacterModel {
+struct CharacterModel : Codable, Identifiable {
     let id : Int
     let name : String
     let status : String
     let species : String
     let gender : String
+    let type : String
     let image : String
-    let origin : LocationModel
-    let location : LocationModel
-    let episodes : [String]
-}
-
-struct LocationModel {
-    let name : String
-    let url : String
 }

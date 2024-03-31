@@ -8,14 +8,27 @@
 import SwiftUI
 
 struct Characters: View {
+    
+    @ObservedObject var charactersvm = CharactersViewModel()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationStack {
+            List {
+                ForEach(charactersvm.charactersData) {
+                    character in
+                    NavigationLink {
+                        CharacterDetail(character: character)
+                    }label : {
+                        Text(character.name)
+                    }
+                }
+            }
+            .onAppear {
+                charactersvm.fetchData()
+            }
+            .listStyle(.grouped)
+            .navigationTitle("Ricks")
         }
-        .padding()
     }
 }
 
